@@ -35,7 +35,7 @@ public class RecyclerListFragment extends Fragment implements
 
         WinHandler win = new WinHandler() {
             @Override
-            public void finishGame() {
+            public void win() {
                 isWinner = true;
                 restartButton.setText("You won!");
                 restartButton.setTextColor(Color.GREEN);

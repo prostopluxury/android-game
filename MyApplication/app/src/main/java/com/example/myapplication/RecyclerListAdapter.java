@@ -15,6 +15,16 @@ import java.util.List;
 
 public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapter.ItemViewHolder> implements ItemTouchHelperAdapter {
 
+    private static final int[] IMAGES = {
+            R.drawable.image1,
+            R.drawable.image2,
+            R.drawable.image3,
+            R.drawable.image4,
+            R.drawable.image5,
+            R.drawable.image6,
+            R.drawable.image7,
+            R.drawable.image8,
+    };
     private static List<Integer> items;
     private static int length = 8;
 
@@ -46,11 +56,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
             greenCell = holder;
             holder.imageView.setImageResource(R.drawable.ic_launcher_background);
         } else {
-            switch (items.get(position)) {
-                default:
-                    holder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
-                    break;
-            }
+            holder.imageView.setImageResource(IMAGES[items.get(position)]);
         }
 
         holder.imageView.setOnTouchListener(new View.OnTouchListener() {
@@ -63,20 +69,16 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
                 return false;
             }
         });
-        if (isSorted(items)){
-            winHandler.finishGame();
+        if (isWinner(items)){
+            winHandler.win();
         }
     }
 
-    public static boolean isSorted(List<Integer> list) {
-        if ((list) == null || list.size() == 1) {
-            return true;
-        }
-
-        Iterator<Integer> iter = list.iterator();
-        Integer current, previous = iter.next();
-        while (iter.hasNext()) {
-            current = iter.next();
+    public static boolean isWinner(List<Integer> list) {
+        Iterator<Integer> iterator = list.iterator();
+        Integer current, previous = iterator.next();
+        while (iterator.hasNext()) {
+            current = iterator.next();
             if (previous.compareTo(current) > 0) {
                 return false;
             }

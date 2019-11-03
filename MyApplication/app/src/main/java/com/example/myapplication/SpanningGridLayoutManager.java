@@ -45,7 +45,7 @@ public class SpanningGridLayoutManager extends GridLayoutManager {
             layoutParams.width = (int) Math.round(getHorizontalSpace() / Math.ceil(getItemCount() / getSpanCount()));
         }
         else if(getOrientation() == VERTICAL){
-            layoutParams.height = (int) Math.round(getVerticalSpace() / Math.ceil(getItemCount() / getSpanCount()));
+            layoutParams.height = (int) Math.round(getHorizontalSpace() / Math.ceil(getItemCount() / getSpanCount()));
         }
         return layoutParams;
     }
