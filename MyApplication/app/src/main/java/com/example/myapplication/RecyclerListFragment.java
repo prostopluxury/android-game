@@ -12,7 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class RecyclerListFragment extends Fragment {
+public class RecyclerListFragment extends Fragment implements
+        OnStartDragListener {
 
     private ItemTouchHelper mItemTouchHelper;
     private Button restartButton;
@@ -41,7 +42,7 @@ public class RecyclerListFragment extends Fragment {
             }
         };
 
-        final RecyclerListAdapter adapter = new RecyclerListAdapter(win);
+        final RecyclerListAdapter adapter = new RecyclerListAdapter(this, win);
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         restartButton = view.findViewById(R.id.restartButton);
@@ -66,6 +67,11 @@ public class RecyclerListFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder) {
+        mItemTouchHelper.startDrag(viewHolder);
     }
 
 }

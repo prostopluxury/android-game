@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
+import android.support.v4.view.MotionEventCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,24 +15,22 @@ import java.util.List;
 
 public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapter.ItemViewHolder> implements ItemTouchHelperAdapter {
 
-    private static List<Integer> INDEXES;
+    private static List<Integer> items;
+    private static int length = 8;
 
     private ItemViewHolder greenCell;
     private WinHandler winHandler;
+    private final OnStartDragListener mDragStartListener;
 
 
-    public RecyclerListAdapter(WinHandler win) {
-        INDEXES = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            INDEXES.add(i, i);
-        }
-        INDEXES.add(8);
-        Collections.swap(INDEXES, 8, 7);
+    public RecyclerListAdapter(OnStartDragListener dragListener, WinHandler win) {
+        reshuffle();
         winHandler = win;
+        mDragStartListener = dragListener;
     }
 
-    public static void setINDEXES(List<Integer> INDEXES) {
-        RecyclerListAdapter.INDEXES = INDEXES;
+    public static void setItems(List<Integer> items) {
+        RecyclerListAdapter.items = items;
     }
 
     @Override
@@ -41,16 +41,29 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
     }
 
     @Override
-    public void onBindViewHolder(ItemViewHolder holder, int position) {
-        if (INDEXES.get(position) == 8) {
+    public void onBindViewHolder(final ItemViewHolder holder, int position) {
+        if (items.get(position) == length) {
             greenCell = holder;
             holder.imageView.setImageResource(R.drawable.ic_launcher_background);
         } else {
-            switch (INDEXES.get(position)) {
+            switch (items.get(position)) {
+                default:
+                    holder.imageView.setImageResource(R.drawable.ic_launcher_foreground);
+                    break;
             }
         }
 
-        if (isSorted(INDEXES)){
+        holder.imageView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (MotionEventCompat.getActionMasked(event) ==
+                        MotionEvent.ACTION_DOWN) {
+                    mDragStartListener.onStartDrag(holder);
+                }
+                return false;
+            }
+        });
+        if (isSorted(items)){
             winHandler.finishGame();
         }
     }
@@ -74,7 +87,7 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
 
     @Override
     public int getItemCount() {
-        return INDEXES.size();
+        return items.size();
     }
 
     @Override
@@ -84,19 +97,18 @@ public class RecyclerListAdapter extends RecyclerView.Adapter<RecyclerListAdapte
 
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
-        Collections.swap(INDEXES, fromPosition, toPosition);
+        Collections.swap(items, fromPosition, toPosition);
         notifyDataSetChanged();
     }
 
     public void reshuffle() {
-
-        List<Integer> NEW_INDEXES = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            NEW_INDEXES.add(i, i);
+        List<Integer> newItems = new ArrayList<>();
+        for (int i = 0; i < length; i++) {
+            newItems.add(i, i);
         }
-        Collections.shuffle(NEW_INDEXES);
-        NEW_INDEXES.add(8);
-        setINDEXES(NEW_INDEXES);
+        Collections.shuffle(newItems);
+        newItems.add(length);
+        setItems(newItems);
         notifyDataSetChanged();
     }
 

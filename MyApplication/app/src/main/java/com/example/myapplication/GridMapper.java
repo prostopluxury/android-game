@@ -21,11 +21,7 @@ public class GridMapper {
 
     private static void toGrid(int index) {
         currentColumn = index % columns;
-        currentRow = index / columns;
-    }
-
-    private static int fromGrid(int column, int row) {
-        return column + (row * columns);
+        currentRow = index / rows;
     }
 
     public static int isNeighbour(int nonEmptyCellIndex, int emptyCellIndex) {
