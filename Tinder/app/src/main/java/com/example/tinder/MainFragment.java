@@ -1,10 +1,16 @@
-package com.example.tinder;
+package com.example.tinder.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.tinder.FragmentHelper;
+import com.example.tinder.ItemAdapter;
+import com.example.tinder.ItemTouchHelperCallback;
+import com.example.tinder.R;
+import com.example.tinder.TinderImage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +39,7 @@ public class MainFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_1, container, false);
+        return inflater.inflate(R.layout.main_fragment, container, false);
     }
 
     @Override
@@ -58,11 +64,11 @@ public class MainFragment extends Fragment {
 
         List<TinderImage> items = new ArrayList<>();
 
-        items.add(new TinderImage("Anastasiya, 21", "https://sun9-34.userapi.com/c834204/v834204558/15de1d/AgPglW34MUA.jpg", 4.7f));
-        items.add(new TinderImage("Alina, 20","https://sun9-1.userapi.com/c854420/v854420456/eb86d/03CZOcQeD-8.jpg",  676f));
-        items.add(new TinderImage("Ekaterina, 29", "https://sun9-49.userapi.com/c840539/v840539701/2f8a8/CAA4uYgDTrI.jpg", 3.2f));
-        items.add(new TinderImage("Alexandra, 20", "https://sun9-28.userapi.com/c837629/v837629057/57a1b/Is2FiQ3kvKI.jpg", 1.4f));
-        items.add(new TinderImage("Sasha, 22", "https://sun9-26.userapi.com/c844321/v844321086/ea33d/Opxb1yDeP-A.jpg", 11073f));
+        items.add(new TinderImage("Tom, 2", "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png", 4.7f));
+        items.add(new TinderImage("Cat, 4","https://ichef.bbci.co.uk/wwfeatures/live/976_549/images/live/p0/7r/yy/p07ryyyj.jpg",  676f));
+        items.add(new TinderImage("Yarik, 8", "https://www.nationalgeographic.com/content/dam/news/2018/05/17/you-can-train-your-cat/02-cat-training-NationalGeographic_1484324.jpg", 3.2f));
+        items.add(new TinderImage("Lev, 4", "https://upload.wikimedia.org/wikipedia/commons/6/66/An_up-close_picture_of_a_curious_male_domestic_shorthair_tabby_cat.jpg", 1.4f));
+        items.add(new TinderImage("Franchesco, 5", "https://www.humanesociety.org/sites/default/files/styles/768x326/public/2018/08/kitten-440379.jpg?h=f6a7b1af&itok=vU0J0uZR", 11073f));
         return items;
     }
 }
