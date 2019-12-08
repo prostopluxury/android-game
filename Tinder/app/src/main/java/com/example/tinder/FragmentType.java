@@ -1,8 +1,3 @@
-/**
- * Created by Alexander Lomat
- */
-
-
 package com.example.tinder;
 
 /**

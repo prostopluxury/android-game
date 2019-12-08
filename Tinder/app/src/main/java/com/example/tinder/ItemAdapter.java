@@ -1,6 +1,3 @@
-/**
- * Created by Alexander Lomat
- */
 
 package com.example.tinder;
 
@@ -14,6 +11,8 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.example.tinder.CanvasItems.CustomImageView;
+import com.example.tinder.CanvasItems.CustomTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,11 +20,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-import by.bsuir.tinder.fragment.FragmentHelper;
-import by.bsuir.tinder.fragment.FragmentType;
-import by.bsuir.tinder.pojo.TinderImage;
-import by.bsuir.tinder.view.CustomImageView;
-import by.bsuir.tinder.view.CustomTextView;
 
 /**
  * The type Item adapter.

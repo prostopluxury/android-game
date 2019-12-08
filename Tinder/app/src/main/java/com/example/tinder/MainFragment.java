@@ -1,8 +1,3 @@
-/**
- * Created by Alexander Lomat
- */
-
-
 package com.example.tinder;
 
 import android.content.Context;
@@ -20,9 +15,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import by.bsuir.tinder.adapter.ItemAdapter;
-import by.bsuir.tinder.callback.ItemTouchHelperCallback;
-import by.bsuir.tinder.pojo.TinderImage;
 
 /**
  * The type Main fragment.
@@ -66,6 +58,11 @@ public class MainFragment extends Fragment {
 
         List<TinderImage> items = new ArrayList<>();
 
+        items.add(new TinderImage("Anastasiya, 21", "https://sun9-34.userapi.com/c834204/v834204558/15de1d/AgPglW34MUA.jpg", 4.7f));
+        items.add(new TinderImage("Alina, 20","https://sun9-1.userapi.com/c854420/v854420456/eb86d/03CZOcQeD-8.jpg",  676f));
+        items.add(new TinderImage("Ekaterina, 29", "https://sun9-49.userapi.com/c840539/v840539701/2f8a8/CAA4uYgDTrI.jpg", 3.2f));
+        items.add(new TinderImage("Alexandra, 20", "https://sun9-28.userapi.com/c837629/v837629057/57a1b/Is2FiQ3kvKI.jpg", 1.4f));
+        items.add(new TinderImage("Sasha, 22", "https://sun9-26.userapi.com/c844321/v844321086/ea33d/Opxb1yDeP-A.jpg", 11073f));
         return items;
     }
 }

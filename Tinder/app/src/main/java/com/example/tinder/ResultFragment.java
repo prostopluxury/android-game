@@ -1,7 +1,3 @@
-/**
- * Created by Alexander Lomat
- */
-
 
 package com.example.tinder;
 
@@ -18,8 +14,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import by.bsuir.tinder.adapter.ItemAdapter;
-import by.bsuir.tinder.view.HomeButton;
 
 /**
  * The type Result fragment.

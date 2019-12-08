@@ -1,13 +1,5 @@
-/**
- * Created by Alexander Lomat
- */
-
 
 package com.example.tinder;
-
-import java.util.List;
-
-import by.bsuir.tinder.pojo.TinderImage;
 
 /**
  * The interface Fragment helper.
